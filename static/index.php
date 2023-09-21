@@ -46,3 +46,5 @@
             &copy; 2023 - LabManager - <a href="privacy">Privacidade</a>
         </div>
     </footer>
+</body>
+</html>
