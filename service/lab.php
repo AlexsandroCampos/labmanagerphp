@@ -5,10 +5,10 @@ class Lab {
   private $number;
   private $block;
 
-  public function __construct($cpu, $ram, $lab) {
-    $this->setName($cpu);
-    $this->setNumber($ram);
-    $this->setBlock($lab);
+  public function __construct($name, $number, $block) {
+    $this->setName($name);
+    $this->setNumber($number);
+    $this->setBlock($block);
   }
 
 	public function getId() {
@@ -46,42 +46,32 @@ class Lab {
 
 function validateLab() {
     $error = false;
-    $cpu = $_POST["cpu"];
-    $ram = $_POST["ram"];
-    $labId = $_POST["labId"];
+    $name = $_POST["name"];
+    $number = $_POST["number"];
+    $block = $_POST["block"];
 
-    if(empty(trim($cpu))) {
-        echo "CPU é obrigatória <br>";
+    if(empty(trim($name))) {
+        echo "Nome do laboratório é obrigatório <br>";
         $error = true;
     }
 
-    if(is_numeric($cpu)) {
-        echo "CPU deve ser uma string <br>";
+    if(strlen($name) > 50 || strlen($name) < 4) {
+        echo "Nome do laboratório deve ter entre 4 e 50 caracteres <br>";
         $error = true;
     }
 
-    if(strlen($cpu) > 50 || strlen($cpu) < 4) {
-        echo "CPU deve ter entre 4 e 50 caracteres <br>";
+    if(empty(trim($number))) {
+        echo "Número do laboratório é obrigatório <br>";
         $error = true;
     }
 
-    if(empty(trim($ram))) {
-        echo "RAM é obrigatória <br>";
+    if(strlen($number) > 50 || strlen($number) < 4) {
+        echo "Número do laboratório deve ter entre 4 e 50 caracteres <br>";
         $error = true;
     }
 
-    if(is_numeric($ram)) {
-        echo "RAM deve ser uma string <br>";
-        $error = true;
-    }
-
-    if(strlen($ram) > 50 || strlen($ram) < 4) {
-        echo "RAM deve ter entre 4 e 50 caracteres <br>";
-        $error = true;
-    }
-
-    if(empty(trim($labId))) {
-        echo "É necessário atribuir um laboratório para esse computador <br>";
+    if(empty(trim($block))) {
+        echo "ID do Bloco do laboratório é obrigatório <br>";
         $error = true;
     }
 
@@ -91,8 +81,8 @@ function validateLab() {
         return false;
     }
 
-    $campus = new Computer($cpu, $ram, $labId);
-    createLabCookie($campus);
+    $lab = new Lab($name, $number, $block);
+    createLabCookie($lab);
     return true;
 }
 
