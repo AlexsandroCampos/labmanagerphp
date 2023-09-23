@@ -25,10 +25,16 @@
                             <a class="nav-link text-dark" href="privacy">Privacidade</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="computers.php">Computadores</a>
+                            <a class="nav-link text-dark" href="campus.php">Campus</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="block.php">Blocos</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" href="labs.php">Laboratórios</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="computers.php">Computadores</a>
                         </li>
                     </ul>
                 </div>

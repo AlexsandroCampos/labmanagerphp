@@ -110,7 +110,7 @@ function validateComputer() {
     
     if($error)
     {
-      echo '<a href="../static/index.php">Voltar</a><br> '; //voltar para o form de campus
+      echo '<a href="../static/computer.php">Voltar</a><br> ';
       return false;
     }
     
@@ -143,14 +143,13 @@ function createComputerCookie($computer) {
     setcookie("computer-cookie", $serializedValue, time() + 360000000, "/");
 }
 
-$entity = $_POST["entity"];
-if($entity == "computer")
+if($_POST["entity"] == "computer")
 {
-    $result = validateComputer();
-    if($result)
-    {      
-        header("Location: ../static/index.php"); //detalhes do campus
-        die();
-    }
+  $result = validateComputer();
+  if($result)
+  {      
+      header("Location: ../static/index.php"); //detalhes do campus
+      die();
+  }
 }
 ?>

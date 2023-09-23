@@ -25,10 +25,16 @@
                             <a class="nav-link text-dark" href="privacy">Privacidade</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="computers.php">Computadores</a>
+                            <a class="nav-link text-dark" href="campus.php">Campus</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="block.php">Blocos</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" href="labs.php">Laboratórios</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="computers.php">Computadores</a>
                         </li>
                     </ul>
                 </div>
@@ -37,16 +43,16 @@
     </header>
     <div class="container">
         <main role="main" class="pb-3">
-          <form action="/service/service.php">
+          <form action="/service/block.php" method="post">
               <label for="name">
                 Nome do bloco
                 <input class="form-control" type="text" name="name">
               </label>
               <label for="acronym">
                 ID do campus
-                <input class="form-control" type="number" name="acronym">
+                <input class="form-control" type="number" name="campusId">
               </label>
-              <input type="hidden" value="block" name="entity"/>
+              <input type="hidden" name="entity" value="block">
               <button type="submit" class="btn btn-primary">Enviar</button>
           </form>
         </main>

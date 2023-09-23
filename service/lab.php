@@ -87,7 +87,7 @@ function validateLab() {
 
     if($error)
     {
-        echo '<a href="../static/index.php">Voltar</a><br> '; //voltar para o form de campus
+        echo '<a href="../static/lab.php">Voltar</a><br> ';
         return false;
     }
 
@@ -120,8 +120,7 @@ function createLabCookie($lab) {
     setcookie("lab-cookie", $serializedValue, time() + 360000000, "/");
 }
 
-$entity = $_POST["entity"];
-if($entity == "campus")
+if($_POST["entity"] == "lab")
 {
     $result = validateLab();
     if($result)
