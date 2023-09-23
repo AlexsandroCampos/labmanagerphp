@@ -43,41 +43,6 @@
         }
     }
 
-    class Block
-    {
-        private $id;
-        private $name;
-        private $campusId;
-
-        public function getId() {
-            return $this->id;
-        }
-        public function setId($id) {
-            $this->id = $id;
-        }
-
-        public function getName() {
-            return $this->name;
-        }
-    
-        public function setName($name) {
-            $this->name = $name;
-        }
-
-        public function getCampusId() {
-            return $this->campusId;
-        }
-    
-        public function setCampusId($campusId) {
-            $this->campusId = $campusId;
-        }
-    
-        public function __construct($name, $campusId) {
-            $this->setName($name);
-            $this->setCampusId($campusId);
-        }
-    } 
-
     function validateCampus()
     {
         $error = false;
@@ -166,65 +131,7 @@
         setcookie("campus-cookie", $serializedValue, time() + 360000000, "/");
     }
 
-    function validateBlock()
-    {
-        $error = false;
-        $campusId = $_POST["campusId"];
-        $name = $_POST["name"];
-
-        if(empty(trim($name))) {
-            echo "Nome é obrigatório <br>";
-            $error = true;
-        }
-
-        if(is_numeric($name)) {
-            echo "Nome deve ser uma string <br>";
-            $error = true;
-        }
-
-        if(strlen($name) > 50) {
-            echo "Nome deve ter entre 4 e 50 caracteres <br>";
-            $error = true;
-        }
-
-        if($error)
-        {
-            echo '<a href="../static/block.php">Voltar</a><br> ';
-            return false;
-        }
-
-        $block = new Block($name, $campusId);
-        createBlockCookie($block);
-        return true;
-    }
-
-    function createBlockCookie($block)
-    {
-        if (!isset($_COOKIE["block-cookie"])) {
-            $value = array();
-        } 
-        else {
-            $value = unserialize($_COOKIE["block-cookie"]);
-            if (!$value) {
-                $value = array();
-            }
-        }
-
-        $id = 0;
-        if (isset($value) && count($value) >= 1) {
-            $id = end($value)->getId();
-        }
-
-        $block->setId($id + 1);
-
-        array_push($value, $block);
-
-        $serializedValue = serialize($value);
-        setcookie("block-cookie", $serializedValue, time() + 360000000, "/");
-    }
-
-    $entity = $_POST["entity"];
-    if($entity == "campus")
+    if($_POST["entity"] == "campus")
     {
         $result = validateCampus();
         if($result)
@@ -232,14 +139,5 @@
             header("Location: ../static/info-campus.php");
             die();
         }
-    }
-    if($entity == "block")
-    {
-        $result = validateBlock();
-        if($result)
-        {      
-            header("Location: ../static/info-block.php");
-            die();
-        }
-    }
+    } 
 ?>

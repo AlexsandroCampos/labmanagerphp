@@ -23,7 +23,7 @@
     </header>
     <div class="container d-flex justify-content-center align-items-center">
         <main role="main" class="pb-3">
-            <form class="d-flex flex-column" action="/service/service.php">
+            <form class="d-flex flex-column" action="/service/campus.php" method="post">
                 <label class="text-center my-2" for="name">
                   Nome do campus
                   <input class="form-control" type="text" name="name">
@@ -33,10 +33,10 @@
                   <input class="form-control" type="text" name="address">
                 </label>
                 <label class="text-center my-2" for="acronym">
-                  Acrônimo do campus
+                  Sigla do campus
                   <input class="form-control" type="text" name="acronym">
                 </label>
-                <input type="hidden" value="campus" name="entity"/>
+                <input type="hidden" name="entity" value="campus">
                 <button type="submit" class="btn btn__submit lvl1__bg">Enviar</button>
             </form>
         </main>

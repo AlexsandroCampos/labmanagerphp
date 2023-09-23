@@ -36,7 +36,7 @@
                   ID do Bloco do laboratório
                   <input class="form-control" type="number" name="block">
                 </label>
-                <input type="hidden" value="lab" name="entity"/>
+                <input type="hidden" name="entity" value="lab">
                 <button type="submit" class="btn btn__submit lvl1__bg">Enviar</button>
             </form>
         </main>

@@ -23,16 +23,16 @@
     </header> 
     <div class="container d-flex justify-content-center align-items-center">
         <main role="main" class="pb-3">
-            <form class="d-flex flex-column" action="/service/service.php">
+            <form class="d-flex flex-column" action="/service/block.php" method="post">
                 <label class="text-center my-2" for="name">
                     Nome do bloco
                     <input class="form-control" type="text" name="name">
                 </label>
                 <label class="text-center my-2" for="acronym">
                     ID do campus
-                    <input class="form-control" type="number" name="acronym">
+                    <input class="form-control" type="number" name="campusId">
                 </label>
-                <input type="hidden" value="block" name="entity"/>
+                <input type="hidden" name="entity" value="block">
                 <button type="submit" class="btn btn__submit lvl1__bg">Enviar</button>
             </form>
         </main>

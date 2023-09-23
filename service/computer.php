@@ -143,8 +143,7 @@ function createComputerCookie($computer) {
     setcookie("computer-cookie", $serializedValue, time() + 360000000, "/");
 }
 
-$entity = $_POST["entity"];
-if($entity == "computer")
+if($_POST["entity"] == "computer")
 {
     $result = validateComputer();
     if($result)

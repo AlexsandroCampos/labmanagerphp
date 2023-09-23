@@ -27,7 +27,7 @@
                 <div class="col-md-5">
                     <?php
                         echo '<h3 class="text-center">' . $blockName . '</h3>';
-                        echo '<h5 class="text-center text-muted">Câmpus: ' . $blockCampusAcronimo . '</h5>';
+                        echo '<h5 class="text-center text-muted">Câmpus: ' . $blockCampusSigla . '</h5>';
                     ?>
                 </div>
                 <div class="col-auto">

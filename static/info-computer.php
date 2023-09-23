@@ -26,7 +26,7 @@
             <section class="row m-auto justify-content-center">
                 <div class="col-md-5">
                     <?php
-                        echo '<h5 class="text-center text-muted">Câmpus: ' . $computerCampusAcronimo . '</h5>';
+                        echo '<h5 class="text-center text-muted">Câmpus: ' . $computerCampusSigla . '</h5>';
                         echo '<p class="text-center text-muted">CPU: ' . $computerCPU . '</p>';
                         echo '<p class="text-center text-muted">RAM: ' . $computerRAM . '</p>';
                     ?>
