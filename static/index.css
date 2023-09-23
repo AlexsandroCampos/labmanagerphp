@@ -1,0 +1,12 @@
+.index__create-button {
+    cursor: pointer;
+    transition: filter 0.1s ease-in-out;
+}
+
+.index__create-button:hover {
+    filter: brightness(0.9);
+}
+
+.index__create-button:active {
+    filter: brightness(0.8);
+}

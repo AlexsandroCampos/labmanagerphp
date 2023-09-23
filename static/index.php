@@ -6,49 +6,64 @@
     <title>LabManager</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MvcLabManager</a>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light lvl0__bg box-shadow mb-3">
+            <div class="d-flex justify-content-center align-items-center container">
+                <a href="index" class="navbar-brand lvl1__bg p-2 px-3 m-0 rounded-4" asp-area="" asp-controller="Home" asp-action="Index">Lab Manager</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="privacy">Privacidade</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="computers.php">Computadores</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="labs.php">Laboratórios</a>
-                        </li>
-                    </ul>
-                </div>
             </div>
         </nav>
     </header>
     <div class="container">
         <main role="main" class="pb-3">
-            <section class="row">
-                <div class="col-md-6">
-                    <div class="rounded-5 p-3 mb-1 bg-dark"></div>
-                    <div class="rounded-5 p-3 mb-1 bg-success"></div>
-                    <div class="rounded-5 p-3 mb-1 bg-info"></div>
+            <section class="row m-auto justify-content-center">
+                <div class="col-md-5">
+                    <a href="campus.php" class="text-white text-decoration-none">
+                        <div class="index__create-button lvl0__bg rounded-4 p-4 mb-2">
+                            <h3 class="m-0 text-dark">Criar Campus &#43;</h3>
+                        </div>
+                    </a>
+                    <a href="block.php" class="text-white text-decoration-none">
+                        <div class="index__create-button lvl0__bg rounded-4 p-4 my-2">
+                            <h3 class="m-0 text-dark">Criar Bloco &#43;</h3>
+                        </div>
+                    </a>
+                    <a href="labs.php" class="text-white text-decoration-none">
+                        <div class="index__create-button lvl0__bg rounded-4 p-4 my-2">
+                            <h3 class="m-0 text-dark">Criar Laboratório &#43;</h3>
+                        </div>
+                    </a>
+                    <a href="computers.php" class="text-white text-decoration-none">
+                        <div class="index__create-button lvl0__bg rounded-4 p-4 mt-2">
+                            <h3 class="m-0 text-dark">Criar Computador &#43;</h3>
+                        </div>
+                    </a>
                 </div>
-                <div class="col-md-6"></div>
+                <div class="col-auto">
+                    <div class="vr rounded-5 h-100 bg-dark"></div>
+                </div>
+                
+                <!-- Listagem -->
+                <div class="col-md-6">
+                    <div class="text-center"><small>Listagem dos Câmpus</small></div>
+                    <div class="lvl0__bg p-3 rounded-4">
+                        <?php
+                            
+                        ?>
+                    </div>
+                </div>
             </section>
         </main>
     </div>
 
-    <footer class="border-top footer text-muted fixed-bottom pb-3 pt-3">
+    <footer class="footer text-muted fixed-bottom lvl0__bg pb-3 pt-3">
         <div class="container">
             &copy; 2023 - LabManager - <a href="privacy">Privacidade</a>
         </div>
