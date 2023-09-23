@@ -11,9 +11,9 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light lvl0__bg box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light lvl0__bg box-shadow mb-5">
             <div class="d-flex justify-content-center align-items-center container">
-                <a href="index" class="navbar-brand lvl1__bg p-2 px-3 m-0 rounded-4" asp-area="" asp-controller="Home" asp-action="Index">Lab Manager</a>
+                <a href="index" class="navbar-brand lvl1__bg p-2 px-3 m-0 rounded-4" asp-area="" asp-controller="Home" asp-action="Index">LabManager</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -27,7 +27,7 @@
                 <div class="col-md-5">
                     <a href="campus.php" class="text-white text-decoration-none">
                         <div class="index__create-button lvl0__bg rounded-4 p-4 mb-2">
-                            <h3 class="m-0 text-dark">Criar Campus &#43;</h3>
+                            <h3 class="m-0 text-dark">Criar Câmpus &#43;</h3>
                         </div>
                     </a>
                     <a href="block.php" class="text-white text-decoration-none">
@@ -50,9 +50,9 @@
                     <div class="vr rounded-5 h-100 bg-dark"></div>
                 </div>
                 
-                <!-- Listagem -->
+                <!-- Listagem (Campus) -->
                 <div class="col-md-6">
-                    <div class="text-center"><small>Listagem dos Câmpus</small></div>
+                    <div class="text-center"><small>Listagem dos Campus</small></div>
                     <div class="lvl0__bg p-3 rounded-4">
                         <?php
                             
