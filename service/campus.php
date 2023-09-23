@@ -103,7 +103,7 @@
 
         $campus = new Campus($name, $address, $acronym);
         createCampusCookie($campus);
-        return true;
+        return $campus;
     }
 
     function createCampusCookie($campus)
@@ -131,13 +131,15 @@
         setcookie("campus-cookie", $serializedValue, time() + 360000000, "/");
     }
 
-    if($_POST["entity"] == "campus")
-    {
-        $result = validateCampus();
-        if($result)
-        {      
-            header("Location: ../static/info-campus.php");
-            die();
-        }
-    } 
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if($_POST["entity"] == "campus")
+        {
+            $campus = validateCampus();
+            if($campus != null)
+            {      
+                header("Location: ../static/info-campus.php?id=" . $campus->getId());
+                die();
+            }
+        } 
+    }
 ?>

@@ -24,8 +24,43 @@
     <div class="container">
         <main role="main" class="pb-3">
             <section class="row m-auto justify-content-center">
-                <div class="col-md-5">
+                <div class="col-md-4">
                     <?php
+                        require_once '../service/block.php';
+
+                        if(!isset($_COOKIE['block-cookie']))
+                        {
+                            header("Location: block.php");
+                            die();
+                        } else {
+                            $blockCookie = unserialize($_COOKIE['block-cookie']);
+                            foreach ($blockCookie as $block) {
+                                if ($block->getId() == $_GET['id']) {
+                                    $blockData = $block;
+                                    break;
+                                }
+                            }
+
+                            $blockName = $blockData->getName();
+                            $blockCampusId = $blockData->getCampusId();
+                            $blockCampusSigla = "";
+
+                            require_once '../service/campus.php';
+
+                            if(!isset($_COOKIE['campus-cookie'])) {
+                                header("Location: campus.php");
+                                die();
+                            } else {
+                                $campusCookie = unserialize($_COOKIE['campus-cookie']);
+                                foreach ($campusCookie as $campus) {
+                                    if ($campus->getId() == $blockCampusId) {
+                                        $blockCampusSigla = $campus->getAcronym();
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+
                         echo '<h3 class="text-center">' . $blockName . '</h3>';
                         echo '<h5 class="text-center text-muted">Câmpus: ' . $blockCampusSigla . '</h5>';
                     ?>
@@ -34,12 +69,34 @@
                     <div class="vr rounded-5 h-100 bg-dark"></div>
                 </div>
                 
-                <!-- Listagem -->
-                <div class="col-md-6">
+                <!-- Listagem (labs) -->
+                <div class="col-md-7">
                     <div class="text-center"><small>Listagem dos Laboratórios</small></div>
                     <div class="lvl0__bg p-3 rounded-4">
                         <?php
-                            
+                            require_once '../service/lab.php';
+
+                            if (!isset($_COOKIE['lab-cookie'])) {
+                                echo '
+                                    <div class="lvl1__bg p-3 rounded-4 mb-3">
+                                        <h5 class="text-center">Nenhum laboratório cadastrado</h5>
+                                        <div class="text-center"><a href="labs.php" class="btn btn__submit lvl2__bg">Criar um</a></div>
+                                    </div> 
+                                ';
+                            } else {
+                                $labCookie = unserialize($_COOKIE['lab-cookie']);
+                                
+                                foreach ($labCookie as $lab) {
+                                    if ($lab->getBlockId() == $_GET['id']) {
+                                        echo '
+                                            <div class="lvl1__bg p-3 rounded-4 mb-3">
+                                                <h5 class="text-center">' . $lab->getName() . '</h5>
+                                                <div class="text-center"><a href="info-lab.php?id=' . $lab->getId() . '" class="btn btn__submit lvl2__bg">Ver mais</a></div>
+                                            </div>
+                                        ';
+                                    }
+                                }
+                            }
                         ?>
                     </div>
                 </div>

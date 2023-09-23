@@ -24,7 +24,7 @@
     <div class="container">
         <main role="main" class="pb-3">
             <section class="row m-auto justify-content-center">
-                <div class="col-md-5">
+                <div class="col-md-4">
                     <a href="campus.php" class="text-white text-decoration-none">
                         <div class="index__create-button lvl0__bg rounded-4 p-4 mb-2">
                             <h3 class="m-0 text-dark">Criar Câmpus &#43;</h3>
@@ -51,11 +51,31 @@
                 </div>
                 
                 <!-- Listagem (Campus) -->
-                <div class="col-md-6">
+                <div class="col-md-7">
                     <div class="text-center"><small>Listagem dos Campus</small></div>
                     <div class="lvl0__bg p-3 rounded-4">
                         <?php
-                            
+                            require_once '../service/campus.php';
+
+                            if (!isset($_COOKIE['campus-cookie'])) {
+                                echo '
+                                    <div class="lvl1__bg p-3 rounded-4 mb-3">
+                                        <h5 class="text-center">Nenhum câmpus cadastrado</h5>
+                                        <div class="text-center"><a href="campus.php" class="btn btn__submit lvl2__bg">Criar um</a></div>
+                                    </div> 
+                                ';
+                            } else {
+                                $campusCookie = unserialize($_COOKIE['campus-cookie']);
+                                
+                                foreach ($campusCookie as $campus) {
+                                    echo '
+                                        <div class="lvl1__bg p-3 rounded-4 mb-3">
+                                            <h5 class="text-center">' . $campus->getName() . '</h5>
+                                            <div class="text-center"><a href="info-campus.php?id=' . $campus->getId() . '" class="btn btn__submit lvl2__bg">Ver mais</a></div>
+                                        </div>
+                                    ';
+                                }
+                            }
                         ?>
                     </div>
                 </div>

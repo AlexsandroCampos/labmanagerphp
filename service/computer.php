@@ -3,14 +3,14 @@ class Computer {
   private $id;
   private $cpu;
   private $ram;
-  private $lab;
+  private $labId;
 
-	public function getLab() {
-		return $this->lab;
+	public function getLabId() {
+		return $this->labId;
 	}
 	
-	public function setLab($lab) {
-		$this->lab = $lab;
+	public function setLabId($labId) {
+		$this->labId = $labId;
 	}
 
 	public function getRam() {
@@ -37,17 +37,17 @@ class Computer {
 		$this->id = $id;
 	}
 
-  public function __construct($cpu, $ram, $lab) {
+  public function __construct($cpu, $ram, $labId) {
     $this->setCpu($cpu);
     $this->setRam($ram);
-    $this->setLab($lab);
+    $this->setLabId($labId);
   }
 }
 function validateComputer() {
     $error = false;
     $cpu = $_POST["cpu"];
     $ram = $_POST["ram"];
-    $labId = $_POST["lab"];
+    $labId = $_POST["lab_id"];
 
     if(empty(trim($cpu))) {
         echo "CPU é obrigatória <br>";
@@ -88,6 +88,8 @@ function validateComputer() {
       echo "É necessário atribuir um laboratório para esse computador, crie um laboratório antes de criar um computador <br>";
       $error = true;
     } else {
+      require_once 'lab.php';
+
       $value = unserialize($_COOKIE["lab-cookie"]);
       if (!$value) {
           $value = array();
@@ -95,7 +97,7 @@ function validateComputer() {
   
       $found = false;
       foreach ($value as $obj) {
-        if ($obj->id === $labId) {
+        if ($obj->getId() == $labId) {
           $found = true;
           break;
         }
@@ -114,9 +116,9 @@ function validateComputer() {
       return false;
     }
     
-    $campus = new Computer($cpu, $ram, $labId);
-    createComputerCookie($campus);
-    return true;
+    $computer = new Computer($cpu, $ram, $labId);
+    createComputerCookie($computer);
+    return $computer;
 }
 
 function createComputerCookie($computer) {
@@ -143,13 +145,16 @@ function createComputerCookie($computer) {
     setcookie("computer-cookie", $serializedValue, time() + 360000000, "/");
 }
 
-if($_POST["entity"] == "computer")
-{
-    $result = validateComputer();
-    if($result)
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  if($_POST["entity"] == "computer")
+  {
+    $computer = validateComputer();
+    if($computer != null)
     {      
-        header("Location: ../static/info-computer.php");
+        header("Location: ../static/info-computer.php?id=" . $computer->getId());
         die();
     }
+  }
 }
+
 ?>

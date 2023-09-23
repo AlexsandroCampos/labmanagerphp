@@ -24,25 +24,48 @@
     <div class="container">
         <main role="main" class="pb-3">
             <section class="row m-auto justify-content-center">
-                <div class="col-md-5">
+                <div class="col-12">
                     <?php
-                        echo '<h5 class="text-center text-muted">Câmpus: ' . $computerCampusSigla . '</h5>';
+                        require_once '../service/computer.php';
+
+                        if(!isset($_COOKIE['computer-cookie']))
+                        {
+                            header("Location: ../static/computers.php");
+                            die();
+                        } else {
+                            $computerCookie = unserialize($_COOKIE['computer-cookie']);
+                            foreach ($computerCookie as $computer) {
+                                if ($computer->getId() == $_GET['id']) {
+                                    $computerData = $computer;
+                                    break;
+                                }
+                            }
+
+                            $computerLabId = $computerData->getLabId();
+                            $computerCPU = $computerData->getCpu();
+                            $computerRAM = $computerData->getRam();
+                            $computerLabName = "";
+
+                            require_once '../service/lab.php';
+
+                            if(!isset($_COOKIE['lab-cookie'])) {
+                                header("Location: labs.php");
+                                die();
+                            } else {
+                                $labCookie = unserialize($_COOKIE['lab-cookie']);
+                                foreach ($labCookie as $lab) {
+                                    if ($lab->getId() == $computerLabId) {
+                                        $computerLabName = $lab->getName();
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+
+                        echo '<h5 class="text-center text-muted">Lab: ' . $computerLabName . '</h5>';
                         echo '<p class="text-center text-muted">CPU: ' . $computerCPU . '</p>';
                         echo '<p class="text-center text-muted">RAM: ' . $computerRAM . '</p>';
                     ?>
-                </div>
-                <div class="col-auto">
-                    <div class="vr rounded-5 h-100 bg-dark"></div>
-                </div>
-                
-                <!-- Listagem -->
-                <div class="col-md-6">
-                    <div class="text-center"><small>Listagem dos Blocos</small></div>
-                    <div class="lvl0__bg p-3 rounded-4">
-                        <?php
-                            
-                        ?>
-                    </div>
                 </div>
             </section>
         </main>

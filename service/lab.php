@@ -1,15 +1,15 @@
 <?php
 class Lab {
-  private $id;
-  private $name;
-  private $number;
-  private $block;
+    private $id;
+    private $name;
+    private $number;
+    private $blockId;
 
-  public function __construct($name, $number, $block) {
-    $this->setName($name);
-    $this->setNumber($number);
-    $this->setBlock($block);
-  }
+    public function __construct($name, $number, $blockId) {
+        $this->setName($name);
+        $this->setNumber($number);
+        $this->setBlockId($blockId);
+    }
 
 	public function getId() {
 		return $this->id;
@@ -35,12 +35,12 @@ class Lab {
 		$this->number = $number;
 	}
 
-	public function getBlock() {
-		return $this->block;
+	public function getBlockId() {
+		return $this->blockId;
 	}
 	
-	public function setBlock($block) {
-		$this->block = $block;
+	public function setBlockId($blockId) {
+		$this->blockId = $blockId;
 	}
 }
 
@@ -48,7 +48,7 @@ function validateLab() {
     $error = false;
     $name = $_POST["name"];
     $number = $_POST["number"];
-    $block = $_POST["block"];
+    $blockId = $_POST["block_id"];
 
     if(empty(trim($name))) {
         echo "Nome do laboratório é obrigatório <br>";
@@ -70,7 +70,7 @@ function validateLab() {
         $error = true;
     }
 
-    if(empty(trim($block))) {
+    if(empty(trim($blockId))) {
         echo "ID do Bloco do laboratório é obrigatório <br>";
         $error = true;
     }
@@ -81,9 +81,9 @@ function validateLab() {
         return false;
     }
 
-    $lab = new Lab($name, $number, $block);
+    $lab = new Lab($name, $number, $blockId);
     createLabCookie($lab);
-    return true;
+    return $lab;
 }
 
 function createLabCookie($lab) {
@@ -110,13 +110,15 @@ function createLabCookie($lab) {
     setcookie("lab-cookie", $serializedValue, time() + 360000000, "/");
 }
 
-if($_POST["entity"] == "lab")
-{
-    $result = validateLab();
-    if($result)
-    {      
-        header("Location: ../static/info-lab.php");
-        die();
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if($_POST["entity"] == "lab")
+    {
+        $lab = validateLab();
+        if($lab != null)
+        {      
+            header("Location: ../static/info-lab.php?id=" . $lab->getId());
+            die();
+        }
     }
 }
 ?>

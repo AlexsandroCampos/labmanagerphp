@@ -32,9 +32,9 @@
                   RAM do computador
                   <input class="form-control" type="text" name="ram">
                 </label>
-                <label class="text-center my-2" for="lab">
+                <label class="text-center my-2" for="lab_id">
                   ID do laboratório
-                  <input class="form-control" type="number" name="lab">
+                  <input class="form-control" type="number" name="lab_id">
                 </label>
                 <input type="hidden" name="entity" value="computer">
                 <button type="submit" class="btn btn__submit lvl1__bg">Enviar</button>

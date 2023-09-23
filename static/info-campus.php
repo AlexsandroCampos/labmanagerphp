@@ -24,13 +24,31 @@
     <div class="container">
         <main role="main" class="pb-3">
             <section class="row m-auto justify-content-center">
-                <div class="col-md-5">
+                <div class="col-md-4">
                     <?php
-                        $campusCookie = $_COOKIE['campus-cookie'];
-                        unserialize($campusCookie);
-                        $campusSigla = $campusCookie['sigla'];
+                        require_once '../service/campus.php';
 
-                        echo '<h3 class="text-center">' . $campusSigla . '</h3>';
+                        if(!isset($_COOKIE['campus-cookie']))
+                        {
+                            header("Location: campus.php");
+                            die();
+                        } else {
+                            $campusCookie = unserialize($_COOKIE['campus-cookie']);
+
+                            foreach ($campusCookie as $campus) {
+                                if ($campus->getId() == $_GET['id']) {
+                                    $campusData = $campus;
+                                    break;
+                                }
+                            }
+
+                            $campusName = $campusData->getName();
+                            $campusAddress = $campusData->getAddress();
+                            $campusAcronym = $campusData->getAcronym();
+                        }
+
+
+                        echo '<h3 class="text-center">' . $campusAcronym . '</h3>';
                         echo '<h5 class="text-center text-muted">' . $campusName . '</h5>';
                         echo '<p class="text-center text-muted">' . $campusAddress . '</p>';
                     ?>
@@ -39,12 +57,34 @@
                     <div class="vr rounded-5 h-100 bg-dark"></div>
                 </div>
                 
-                <!-- Listagem -->
-                <div class="col-md-6">
+                <!-- Listagem (Blocos) -->
+                <div class="col-md-7">
                     <div class="text-center"><small>Listagem dos Blocos</small></div>
                     <div class="lvl0__bg p-3 rounded-4">
                         <?php
-                            
+                            require_once '../service/block.php';
+
+                            if (!isset($_COOKIE['block-cookie'])) {
+                                echo '
+                                    <div class="lvl1__bg p-3 rounded-4 mb-3">
+                                        <h5 class="text-center">Nenhum bloco cadastrado</h5>
+                                        <div class="text-center"><a href="block.php" class="btn btn__submit lvl2__bg">Criar um</a></div>
+                                    </div> 
+                                ';
+                            } else {
+                                $blockCookie = unserialize($_COOKIE['block-cookie']);
+                                
+                                foreach ($blockCookie as $block) {
+                                    if ($block->getCampusId() == $_GET['id']) {
+                                        echo '
+                                            <div class="lvl1__bg p-3 rounded-4 mb-3">
+                                                <h5 class="text-center">' . $block->getName() . '</h5>
+                                                <div class="text-center"><a href="info-block.php?id=' . $block->getId() . '" class="btn btn__submit lvl2__bg">Ver mais</a></div>
+                                            </div>
+                                        ';
+                                    }
+                                }
+                            }
                         ?>
                     </div>
                 </div>

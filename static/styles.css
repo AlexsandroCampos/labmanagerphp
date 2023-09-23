@@ -9,22 +9,35 @@ body {
 :root {
     --primary-base-color: #f7f7f7;
     --primary-1-color: #eaeaea;
+    --primary-2-color: #d4d4d4;
 }
 
-.lvl0__bg {
+.lvl0__bg,
+.lvl0__bg:hover,
+.lvl0__bg:active {
     background-color: var(--primary-base-color);
 }
 
-.lvl1__bg {
+.lvl1__bg,
+.lvl1__bg:hover,
+.lvl1__bg:active {
     background-color: var(--primary-1-color);
 }
 
+.lvl2__bg,
+.lvl2__bg:hover,
+.lvl2__bg:active {
+    background-color: var(--primary-2-color);
+}
+
+.btn__submit {
+    transition: filter 0.1s ease-in-out;
+}
+
 .btn__submit:hover {
-    background-color: var(--primary-1-color) !important;
     filter: brightness(0.9) !important;
 }
 
 .btn__submit:active {
-    background-color: var(--primary-1-color) !important;
     filter: brightness(0.8) !important;
 }
