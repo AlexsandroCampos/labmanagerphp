@@ -87,7 +87,7 @@ function validateLab() {
 
     if($error)
     {
-        echo '<a href="../static/index.php">Voltar</a><br> '; //voltar para o form de campus
+        echo '<a href="../static/labs.php">Voltar</a><br> ';
         return false;
     }
 
@@ -126,7 +126,7 @@ if($entity == "campus")
     $result = validateLab();
     if($result)
     {      
-        header("Location: ../static/index.php"); //detalhes do campus
+        header("Location: ../static/info-lab.php");
         die();
     }
 }

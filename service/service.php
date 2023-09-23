@@ -132,7 +132,7 @@
 
         if($error)
         {
-            echo '<a href="../static/index.php">Voltar</a><br> '; //voltar para o form de campus
+            echo '<a href="../static/campus.php">Voltar</a><br> ';
             return false;
         }
 
@@ -189,7 +189,7 @@
 
         if($error)
         {
-            echo '<a href="../static/index.php">Voltar</a><br> '; //voltar para o form de bloco
+            echo '<a href="../static/block.php">Voltar</a><br> ';
             return false;
         }
 
@@ -229,7 +229,7 @@
         $result = validateCampus();
         if($result)
         {      
-            header("Location: ../static/index.php"); //detalhes do campus
+            header("Location: ../static/info-campus.php");
             die();
         }
     }
@@ -238,7 +238,7 @@
         $result = validateBlock();
         if($result)
         {      
-            header("Location: ../static/index.php"); //detalhes do campus
+            header("Location: ../static/info-block.php");
             die();
         }
     }

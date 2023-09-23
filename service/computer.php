@@ -110,7 +110,7 @@ function validateComputer() {
     
     if($error)
     {
-      echo '<a href="../static/index.php">Voltar</a><br> '; //voltar para o form de campus
+      echo '<a href="../static/computers.php">Voltar</a><br> ';
       return false;
     }
     
@@ -149,7 +149,7 @@ if($entity == "computer")
     $result = validateComputer();
     if($result)
     {      
-        header("Location: ../static/index.php"); //detalhes do campus
+        header("Location: ../static/info-computer.php");
         die();
     }
 }
