@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -37,7 +37,18 @@
     </header>
     <div class="container">
         <main role="main" class="pb-3">
-            algum conteúdo
+          <form action="/service/service.php">
+              <label for="name">
+                Nome do bloco
+                <input class="form-control" type="text" name="name">
+              </label>
+              <label for="acronym">
+                ID do campus
+                <input class="form-control" type="number" name="acronym">
+              </label>
+              <input type="hidden" value="block" name="entity"/>
+              <button type="submit" class="btn btn-primary">Enviar</button>
+          </form>
         </main>
     </div>
 

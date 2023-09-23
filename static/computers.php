@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -37,7 +37,22 @@
     </header>
     <div class="container">
         <main role="main" class="pb-3">
-            algum conteúdo
+              <form action="/service/computer.php" method="post">
+                <label for="cpu">
+                  CPU do computador
+                  <input class="form-control" type="text" name="cpu">
+                </label>
+                <label for="ram">
+                  RAM do computador
+                  <input class="form-control" type="text" name="ram">
+                </label>
+                <label for="lab">
+                  ID do laboratório
+                  <input class="form-control" type="number" name="lab">
+                </label>
+                <input type="hidden" value="computer" name="entity"/>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
         </main>
     </div>
 
