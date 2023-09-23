@@ -24,11 +24,47 @@
     <div class="container">
         <main role="main" class="pb-3">
             <section class="row m-auto justify-content-center">
-                <div class="col-md-5">
+                <div class="col-md-4">
                     <?php
-                        echo '<h3 class="text-center">' . $LabName . '</h3>';
-                        echo '<h5 class="text-center text-muted">' . $LabNumber . '</h5>';
-                        echo '<p class="text-center text-muted">' . $LabBlockName . '</p>';
+                        require_once '../service/lab.php';
+                    
+                        if(!isset($_COOKIE['lab-cookie']))
+                        {
+                            header("Location: labs.php");
+                            die();
+                        } else {
+                            $labCookie = unserialize($_COOKIE['lab-cookie']);
+                            foreach ($labCookie as $lab) {
+                                if ($lab->getId() == $_GET['id']) {
+                                    $labData = $lab;
+                                    break;
+                                }
+                            }
+
+                            $labName = $labData->getName();
+                            $labBlockId = $labData->getBlockId();
+                            $labNumber = $labData->getNumber();
+                            $labBlockName = "";
+
+                            require_once '../service/block.php';
+
+                            if(!isset($_COOKIE['block-cookie'])) {
+                                header("Location: block.php");
+                                die();
+                            } else {
+                                $blockCookie = unserialize($_COOKIE['block-cookie']);
+                                foreach ($blockCookie as $block) {
+                                    if ($block->getId() == $labBlockId) {
+                                        $labBlockName = $block->getName();
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+
+                        echo '<h3 class="text-center">' . $labName . '</h3>';
+                        echo '<h5 class="text-center text-muted">' . $labNumber . '</h5>';
+                        echo '<p class="text-center text-muted">Bloco:' . $labBlockName . '</p>';
                     ?>
                 </div>
                 <div class="col-auto">
@@ -36,11 +72,33 @@
                 </div>
                 
                 <!-- Listagem -->
-                <div class="col-md-6">
-                    <div class="text-center"><small>Listagem dos Laboratórios</small></div>
+                <div class="col-md-7">
+                    <div class="text-center"><small>Listagem dos Computadores</small></div>
                     <div class="lvl0__bg p-3 rounded-4">
                         <?php
-                            
+                            require_once '../service/computer.php';
+
+                            if (!isset($_COOKIE['computer-cookie'])) {
+                                echo '
+                                    <div class="lvl1__bg p-3 rounded-4 mb-3">
+                                        <h5 class="text-center">Nenhum computador cadastrado</h5>
+                                        <div class="text-center"><a href="computers.php" class="btn btn__submit lvl2__bg">Criar um</a></div>
+                                    </div> 
+                                ';
+                            } else {
+                                $computerCookie = unserialize($_COOKIE['computer-cookie']);
+                                
+                                foreach ($computerCookie as $computer) {
+                                    if ($computer->getLabId() == $_GET['id']) {
+                                        echo '
+                                            <div class="lvl1__bg p-3 rounded-4 mb-3">
+                                                <h5 class="text-center">' . $computer->getId() . '</h5>
+                                                <div class="text-center"><a href="info-computer.php?id=' . $computer->getId() . '" class="btn btn__submit lvl2__bg">Ver mais</a></div>
+                                            </div>
+                                        ';
+                                    }
+                                }
+                            }
                         ?>
                     </div>
                 </div>

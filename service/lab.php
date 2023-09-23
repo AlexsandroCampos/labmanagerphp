@@ -1,15 +1,15 @@
 <?php
 class Lab {
-  private $id;
-  private $name;
-  private $number;
-  private $block;
+    private $id;
+    private $name;
+    private $number;
+    private $blockId;
 
-  public function __construct($cpu, $ram, $lab) {
-    $this->setName($cpu);
-    $this->setNumber($ram);
-    $this->setBlock($lab);
-  }
+    public function __construct($name, $number, $blockId) {
+        $this->setName($name);
+        $this->setNumber($number);
+        $this->setBlockId($blockId);
+    }
 
 	public function getId() {
 		return $this->id;
@@ -35,53 +35,43 @@ class Lab {
 		$this->number = $number;
 	}
 
-	public function getBlock() {
-		return $this->block;
+	public function getBlockId() {
+		return $this->blockId;
 	}
 	
-	public function setBlock($block) {
-		$this->block = $block;
+	public function setBlockId($blockId) {
+		$this->blockId = $blockId;
 	}
 }
 
 function validateLab() {
     $error = false;
-    $cpu = $_POST["cpu"];
-    $ram = $_POST["ram"];
-    $labId = $_POST["labId"];
+    $name = $_POST["name"];
+    $number = $_POST["number"];
+    $blockId = $_POST["block_id"];
 
-    if(empty(trim($cpu))) {
-        echo "CPU é obrigatória <br>";
+    if(empty(trim($name))) {
+        echo "Nome do laboratório é obrigatório <br>";
         $error = true;
     }
 
-    if(is_numeric($cpu)) {
-        echo "CPU deve ser uma string <br>";
+    if(strlen($name) > 50 || strlen($name) < 4) {
+        echo "Nome do laboratório deve ter entre 4 e 50 caracteres <br>";
         $error = true;
     }
 
-    if(strlen($cpu) > 50 || strlen($cpu) < 4) {
-        echo "CPU deve ter entre 4 e 50 caracteres <br>";
+    if(empty(trim($number))) {
+        echo "Número do laboratório é obrigatório <br>";
         $error = true;
     }
 
-    if(empty(trim($ram))) {
-        echo "RAM é obrigatória <br>";
+    if(strlen($number) > 50 || strlen($number) < 4) {
+        echo "Número do laboratório deve ter entre 4 e 50 caracteres <br>";
         $error = true;
     }
 
-    if(is_numeric($ram)) {
-        echo "RAM deve ser uma string <br>";
-        $error = true;
-    }
-
-    if(strlen($ram) > 50 || strlen($ram) < 4) {
-        echo "RAM deve ter entre 4 e 50 caracteres <br>";
-        $error = true;
-    }
-
-    if(empty(trim($labId))) {
-        echo "É necessário atribuir um laboratório para esse computador <br>";
+    if(empty(trim($blockId))) {
+        echo "ID do Bloco do laboratório é obrigatório <br>";
         $error = true;
     }
 
@@ -91,9 +81,9 @@ function validateLab() {
         return false;
     }
 
-    $campus = new Computer($cpu, $ram, $labId);
-    createLabCookie($campus);
-    return true;
+    $lab = new Lab($name, $number, $blockId);
+    createLabCookie($lab);
+    return $lab;
 }
 
 function createLabCookie($lab) {
@@ -120,13 +110,15 @@ function createLabCookie($lab) {
     setcookie("lab-cookie", $serializedValue, time() + 360000000, "/");
 }
 
-if($_POST["entity"] == "lab")
-{
-    $result = validateLab();
-    if($result)
-    {      
-        header("Location: ../static/info-lab.php");
-        die();
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if($_POST["entity"] == "lab")
+    {
+        $lab = validateLab();
+        if($lab != null)
+        {      
+            header("Location: ../static/info-lab.php?id=" . $lab->getId());
+            die();
+        }
     }
 }
 ?>

@@ -23,18 +23,18 @@
     </header>
     <div class="container d-flex justify-content-center align-items-center">
         <main role="main" class="pb-3">
-            <form class="d-flex flex-column" action="/service/computer.php">
-                <label class="text-center my-2" for="cpu">
+            <form class="d-flex flex-column" action="/service/lab.php" method="post">
+                <label class="text-center my-2" for="name">
                   Nome do laboratório
                   <input class="form-control" type="text" name="name">
                 </label>
-                <label class="text-center my-2" for="ram">
+                <label class="text-center my-2" for="number">
                   Número do laboratório
                   <input class="form-control" type="text" name="number">
                 </label>
-                <label class="text-center my-2" for="lab">
+                <label class="text-center my-2" for="block_id">
                   ID do Bloco do laboratório
-                  <input class="form-control" type="number" name="block">
+                  <input class="form-control" type="number" name="block_id">
                 </label>
                 <input type="hidden" name="entity" value="lab">
                 <button type="submit" class="btn btn__submit lvl1__bg">Enviar</button>

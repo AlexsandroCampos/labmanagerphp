@@ -64,7 +64,7 @@
           echo "É necessário atribuir um campus para esse bloco, crie um campus antes de criar um bloco <br>";
           $error = true;
         } else {
-            require_once 'service/campus.php';
+            require_once 'campus.php';
             $value = unserialize($_COOKIE["campus-cookie"]);
             if (!$value) {
                 $value = array();
@@ -96,7 +96,7 @@
 
         $block = new Block($name, $campusId);
         createBlockCookie($block);
-        return true;
+        return $block;
     }
 
     function createBlockCookie($block)
@@ -124,13 +124,15 @@
         setcookie("block-cookie", $serializedValue, time() + 360000000, "/");
     }
     
-    if($_POST["entity"] == "block")
-    {
-        $result = validateBlock();
-        if($result)
-        {      
-            header("Location: ../static/index.php"); //detalhes do bloco
-            die();
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if($_POST["entity"] == "block")
+        {
+            $block = validateBlock();
+            if($block != null)
+            {      
+                header("Location: ../static/info-block.php?id=" . $block->getId());
+                die();
+            }
         }
     }
 ?>
