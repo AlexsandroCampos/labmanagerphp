@@ -136,7 +136,7 @@
         $result = validateCampus();
         if($result)
         {      
-            header("Location: ../static/index.php"); //detalhes do campus
+            header("Location: ../static/info-campus.php");
             die();
         }
     } 

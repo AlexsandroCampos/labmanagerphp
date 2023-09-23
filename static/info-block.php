@@ -3,11 +3,11 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Criar Computador</title>
+    <title>Detalhes do Bloco</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="computers.css">
+    <link rel="stylesheet" href="info-block.css">
 </head>
 <body>
     <header>
@@ -21,28 +21,33 @@
             </div>
         </nav>
     </header>
-    <div class="container d-flex justify-content-center align-items-center">
+    <div class="container">
         <main role="main" class="pb-3">
-            <form class="d-flex flex-column" action="/service/computer.php" method="post">
-                <label class="text-center my-2" for="cpu">
-                  CPU do computador
-                  <input class="form-control" type="text" name="cpu">
-                </label>
-                <label class="text-center my-2" for="ram">
-                  RAM do computador
-                  <input class="form-control" type="text" name="ram">
-                </label>
-                <label class="text-center my-2" for="lab">
-                  ID do laboratório
-                  <input class="form-control" type="number" name="lab">
-                </label>
-                <input type="hidden" name="entity" value="computer">
-                <button type="submit" class="btn btn__submit lvl1__bg">Enviar</button>
-            </form>
+            <section class="row m-auto justify-content-center">
+                <div class="col-md-5">
+                    <?php
+                        echo '<h3 class="text-center">' . $blockName . '</h3>';
+                        echo '<h5 class="text-center text-muted">Câmpus: ' . $blockCampusSigla . '</h5>';
+                    ?>
+                </div>
+                <div class="col-auto">
+                    <div class="vr rounded-5 h-100 bg-dark"></div>
+                </div>
+                
+                <!-- Listagem -->
+                <div class="col-md-6">
+                    <div class="text-center"><small>Listagem dos Laboratórios</small></div>
+                    <div class="lvl0__bg p-3 rounded-4">
+                        <?php
+                            
+                        ?>
+                    </div>
+                </div>
+            </section>
         </main>
     </div>
 
-    <footer class="footer text-muted fixed-bottom pb-3 lvl0__bg pt-3">
+    <footer class="footer text-muted fixed-bottom lvl0__bg pb-3 pt-3">
         <div class="container">
             &copy; 2023 - LabManager - <a href="privacy">Privacidade</a>
         </div>

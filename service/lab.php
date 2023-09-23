@@ -87,7 +87,7 @@ function validateLab() {
 
     if($error)
     {
-        echo '<a href="../static/lab.php">Voltar</a><br> ';
+        echo '<a href="../static/labs.php">Voltar</a><br> ';
         return false;
     }
 
@@ -125,7 +125,7 @@ if($_POST["entity"] == "lab")
     $result = validateLab();
     if($result)
     {      
-        header("Location: ../static/index.php"); //detalhes do campus
+        header("Location: ../static/info-lab.php");
         die();
     }
 }

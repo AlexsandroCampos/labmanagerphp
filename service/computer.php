@@ -110,7 +110,7 @@ function validateComputer() {
     
     if($error)
     {
-      echo '<a href="../static/computer.php">Voltar</a><br> ';
+      echo '<a href="../static/computers.php">Voltar</a><br> ';
       return false;
     }
     
@@ -145,11 +145,11 @@ function createComputerCookie($computer) {
 
 if($_POST["entity"] == "computer")
 {
-  $result = validateComputer();
-  if($result)
-  {      
-      header("Location: ../static/index.php"); //detalhes do campus
-      die();
-  }
+    $result = validateComputer();
+    if($result)
+    {      
+        header("Location: ../static/info-computer.php");
+        die();
+    }
 }
 ?>
