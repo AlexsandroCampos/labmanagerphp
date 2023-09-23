@@ -26,6 +26,10 @@
             <section class="row m-auto justify-content-center">
                 <div class="col-md-5">
                     <?php
+                        $campusCookie = $_COOKIE['campus-cookie'];
+                        unserialize($campusCookie);
+                        $campusSigla = $campusCookie['sigla'];
+
                         echo '<h3 class="text-center">' . $campusSigla . '</h3>';
                         echo '<h5 class="text-center text-muted">' . $campusName . '</h5>';
                         echo '<p class="text-center text-muted">' . $campusAddress . '</p>';
