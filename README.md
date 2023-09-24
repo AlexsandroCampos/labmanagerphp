@@ -11,7 +11,7 @@ O LabManagerPHP é um sistema desenvolvido para catalogar, organizar e administr
 
 ## Mapa do Site
 
-![LabManagerPHP Mapa de Site](https://imgur.com/a/QidnwRl)
+![LabManagerPHP Mapa de Site](https://i.imgur.com/ETW4CM7.png)
 
 ## Desenvolvedores
 
