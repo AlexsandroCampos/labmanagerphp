@@ -21,20 +21,35 @@
             </div>
         </nav>
     </header>
+    <?php
+        require_once $_SERVER['DOCUMENT_ROOT'].'/service/lab.php';
+        $labCookie = unserialize($_COOKIE['lab-cookie']);
+
+        foreach ($labCookie as $lab) {
+            if ($lab->getId() == $_GET['id']) {
+                $labData = $lab;
+                break;
+            }
+        }
+
+        $name = $labData->getName();
+        $number = $labData->getNumber();
+        $block = $labData->getBlockId();
+    ?>
     <div class="container d-flex justify-content-center align-items-center">
         <main role="main" class="pb-3">
             <form class="d-flex flex-column" action="/service/lab.php" method="post">
                 <label class="text-center my-2" for="name">
-                  Nome do Laboratório<br>
-                  <input type="text" name="name" value="<?php echo isset($name) ? $name : ''; ?>"><br>
+                  Nome do Laboratório
+                  <input class="form-control" type="text" name="name" value="<?php echo isset($name) ? $name : ''; ?>">
                 </label>
                 <label class="text-center my-2" for="number">
-                  Numero do Laboratório<br>
-                  <input type="text" name="number" value="<?php echo isset($number) ? $number : ''; ?>"><br>
+                  Numero do Laboratório
+                  <input class="form-control" type="number" name="number" value="<?php echo isset($number) ? $number : ''; ?>">
                 </label>
-                <label class="text-center my-2" for="lab">
-                    ID do Bloco do laboratório<br>
-                  <input type="text" name="block" value="<?php echo isset($block) ? $block : ''; ?>"><br>
+                <label class="text-center my-2" for="block_id">
+                    ID do Bloco do laboratório
+                  <input class="form-control" type="text" name="block_id" value="<?php echo isset($block) ? $block : ''; ?>">
                 </label>
                 <input type="hidden" name="entity" value="lab">
             

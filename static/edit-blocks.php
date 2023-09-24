@@ -21,16 +21,30 @@
             </div>
         </nav>
     </header>
+    <?php
+        require_once $_SERVER['DOCUMENT_ROOT'].'/service/block.php';
+        $blockCookie = unserialize($_COOKIE['block-cookie']);
+
+        foreach ($blockCookie as $block) {
+            if ($block->getId() == $_GET['id']) {
+                $blockData = $block;
+                break;
+            }
+        }
+
+        $name = $blockData->getName();
+        $campusId = $blockData->getCampusId();
+    ?>
     <div class="container d-flex justify-content-center align-items-center">
         <main role="main" class="pb-3">
             <form class="d-flex flex-column" action="/service/block.php" method="post">
                 <label class="text-center my-2" for="name">
-                  Nome do Bloco<br>
-                  <input type="text" name="name" value="<?php echo isset($name) ? $name : ''; ?>"><br>
+                  Nome do Bloco
+                  <input class="form-control" type="text" name="name" value="<?php echo isset($name) ? $name : ''; ?>">
                 </label>
                 <label class="text-center my-2" for="campus">
-                  ID do Campus<br>
-                  <input type="text" name="lab" value="<?php echo isset($campusId) ? $campusId : ''; ?>"><br>
+                  ID do Campus
+                  <input class="form-control" type="number" name="campusId" value="<?php echo isset($campusId) ? $campusId : ''; ?>">
                 </label>
                 <input type="hidden" name="entity" value="block">
             

@@ -21,6 +21,21 @@
             </div>
         </nav>
     </header>
+    <?php
+        require_once $_SERVER['DOCUMENT_ROOT'].'/service/computer.php';
+        $computerCookie = unserialize($_COOKIE['computer-cookie']);
+
+        foreach ($computerCookie as $computer) {
+            if ($computer->getId() == $_GET['id']) {
+                $computerData = $computer;
+                break;
+            }
+        }
+
+        $cpu = $computerData->getCpu();
+        $ram = $computerData->getRam();
+        $labId = $computerData->getLabId();
+    ?>
     <div class="container d-flex justify-content-center align-items-center">
         <main role="main" class="pb-3">
             <form class="d-flex flex-column" action="/service/computer.php" method="post">
@@ -32,9 +47,9 @@
                   RAM do computador<br>
                   <input type="text" name="ram" value="<?php echo isset($ram) ? $ram : ''; ?>"><br>
                 </label>
-                <label class="text-center my-2" for="lab">
+                <label class="text-center my-2" for="lab_id">
                   ID do Laboratório<br>
-                  <input type="text" name="lab" value="<?php echo isset($labId) ? $labId : ''; ?>"><br>
+                  <input type="number" name="lab_id" value="<?php echo isset($labId) ? $labId : ''; ?>"><br>
                 </label>
                 <input type="hidden" name="entity" value="computer">
             

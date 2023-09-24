@@ -61,10 +61,13 @@
                                 }
                             }
                         }
+                        echo '<h3 class="text-center mb-3">Detalhes do Computador</h3>';
 
                         echo '<h5 class="text-center text-muted">Lab: ' . $computerLabName . '</h5>';
-                        echo '<p class="text-center text-muted">CPU: ' . $computerCPU . '</p>';
+                        echo '<p class="text-center m-0 text-muted">CPU: ' . $computerCPU . '</p>';
                         echo '<p class="text-center text-muted">RAM: ' . $computerRAM . '</p>';
+                        echo '<div class="text-center"><a href="edit-computers.php?id=' . $computerData->getId() . '" class="btn btn__submit lvl1__bg">Editar</a></div>'
+
                     ?>
                 </div>
             </section>
