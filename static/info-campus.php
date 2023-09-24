@@ -65,7 +65,21 @@
                         <?php
                             require_once $_SERVER['DOCUMENT_ROOT'].'/service/block.php';
 
-                            if (!isset($_COOKIE['block-cookie'])) {
+                            function hasChild($cookieType, $id) {
+                                if (isset($_COOKIE["$cookieType-cookie"])) {
+                                    require_once $_SERVER['DOCUMENT_ROOT']."/service/$cookieType.php";
+                                    $openedCookie = unserialize($_COOKIE["$cookieType-cookie"]);
+
+                                    foreach ($openedCookie as $cookieUnit) {
+                                        if ($cookieUnit->getCampusId() == $id) {
+                                            return true;
+                                        }
+                                    }
+                                    return false;
+                                }
+                            }
+
+                            if (hasChild('block', $_GET['id']) == false) {
                                 echo '
                                     <div class="lvl1__bg p-3 rounded-4 mb-3">
                                         <h5 class="text-center">Nenhum bloco cadastrado</h5>
