@@ -26,7 +26,7 @@
             <section class="row m-auto justify-content-center">
                 <div class="col-md-4">
                     <?php
-                        require_once '../service/lab.php';
+                        require_once $_SERVER['DOCUMENT_ROOT'].'/service/lab.php';
                     
                         if(!isset($_COOKIE['lab-cookie']))
                         {
@@ -46,7 +46,7 @@
                             $labNumber = $labData->getNumber();
                             $labBlockName = "";
 
-                            require_once '../service/block.php';
+                            require_once $_SERVER['DOCUMENT_ROOT'].'/service/block.php';
 
                             if(!isset($_COOKIE['block-cookie'])) {
                                 header("Location: block.php");
@@ -76,7 +76,7 @@
                     <div class="text-center"><small>Listagem dos Computadores</small></div>
                     <div class="lvl0__bg p-3 rounded-4">
                         <?php
-                            require_once '../service/computer.php';
+                            require_once $_SERVER['DOCUMENT_ROOT'].'/service/computer.php';
 
                             if (!isset($_COOKIE['computer-cookie'])) {
                                 echo '

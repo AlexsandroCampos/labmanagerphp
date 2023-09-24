@@ -26,7 +26,7 @@
             <section class="row m-auto justify-content-center">
                 <div class="col-md-4">
                     <?php
-                        require_once '../service/block.php';
+                        require_once $_SERVER['DOCUMENT_ROOT'].'/service/block.php';
 
                         if(!isset($_COOKIE['block-cookie']))
                         {
@@ -45,7 +45,7 @@
                             $blockCampusId = $blockData->getCampusId();
                             $blockCampusSigla = "";
 
-                            require_once '../service/campus.php';
+                            require_once $_SERVER['DOCUMENT_ROOT'].'/service/campus.php';
 
                             if(!isset($_COOKIE['campus-cookie'])) {
                                 header("Location: campus.php");
@@ -74,7 +74,7 @@
                     <div class="text-center"><small>Listagem dos Laboratórios</small></div>
                     <div class="lvl0__bg p-3 rounded-4">
                         <?php
-                            require_once '../service/lab.php';
+                            require_once $_SERVER['DOCUMENT_ROOT'].'/service/lab.php';
 
                             if (!isset($_COOKIE['lab-cookie'])) {
                                 echo '

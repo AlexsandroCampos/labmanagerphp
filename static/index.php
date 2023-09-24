@@ -55,7 +55,7 @@
                     <div class="text-center"><small>Listagem dos Campus</small></div>
                     <div class="lvl0__bg p-3 rounded-4">
                         <?php
-                            require_once '../service/campus.php';
+                            require_once $_SERVER['DOCUMENT_ROOT'].'/service/campus.php';
 
                             if (!isset($_COOKIE['campus-cookie'])) {
                                 echo '

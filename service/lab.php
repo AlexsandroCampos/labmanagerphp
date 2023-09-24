@@ -65,8 +65,8 @@ function validateLab() {
         $error = true;
     }
 
-    if(strlen($number) > 50 || strlen($number) < 4) {
-        echo "Número do laboratório deve ter entre 4 e 50 caracteres <br>";
+    if($number > 0) {
+        echo "Número do laboratório deve ser positivo <br>";
         $error = true;
     }
 

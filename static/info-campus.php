@@ -26,7 +26,7 @@
             <section class="row m-auto justify-content-center">
                 <div class="col-md-4">
                     <?php
-                        require_once '../service/campus.php';
+                        require_once $_SERVER['DOCUMENT_ROOT'].'/service/campus.php';
 
                         if(!isset($_COOKIE['campus-cookie']))
                         {
@@ -62,7 +62,7 @@
                     <div class="text-center"><small>Listagem dos Blocos</small></div>
                     <div class="lvl0__bg p-3 rounded-4">
                         <?php
-                            require_once '../service/block.php';
+                            require_once $_SERVER['DOCUMENT_ROOT'].'/service/block.php';
 
                             if (!isset($_COOKIE['block-cookie'])) {
                                 echo '

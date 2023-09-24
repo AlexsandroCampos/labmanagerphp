@@ -26,7 +26,7 @@
             <section class="row m-auto justify-content-center">
                 <div class="col-12">
                     <?php
-                        require_once '../service/computer.php';
+                        require_once $_SERVER['DOCUMENT_ROOT'].'/service/computer.php';
 
                         if(!isset($_COOKIE['computer-cookie']))
                         {
@@ -46,7 +46,7 @@
                             $computerRAM = $computerData->getRam();
                             $computerLabName = "";
 
-                            require_once '../service/lab.php';
+                            require_once $_SERVER['DOCUMENT_ROOT'].'/service/lab.php';
 
                             if(!isset($_COOKIE['lab-cookie'])) {
                                 header("Location: labs.php");
