@@ -35,10 +35,11 @@
         $name = $campusData->getName();
         $address = $campusData->getAddress();
         $acronym = $campusData->getAcronym();
+        $id = $campusData->getId();
     ?>
     <div class="container d-flex justify-content-center align-items-center">
         <main role="main" class="pb-3">
-            <form class="d-flex flex-column" action="/service/campus.php" method="post">
+            <form class="d-flex flex-column" action="/service/edit-campus.php" method="post">
                 <label class="text-center my-2" for="name">
                   Nome do Campus
                   <input class="form-control" type="text" name="name" value="<?php echo isset($name) ? $name : ''; ?>">
@@ -51,8 +52,9 @@
                     Sigla do campus
                   <input class="form-control" type="text" name="acronym" value="<?php echo isset($acronym) ? $acronym : ''; ?>">
                 </label>
-                <input type="hidden" name="entity" value="campus">
-            
+                <input type="hidden" name="entity" value="campus-edit">
+                <input type="hidden" name="id" value="<?php echo isset($id) ? $id : ''; ?>">
+
                 <button type="submit" class="btn btn__submit lvl1__bg">Salvar</button>
             </form>
         </main>

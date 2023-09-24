@@ -1,4 +1,6 @@
 <?php
+require_once $_SERVER['DOCUMENT_ROOT'].'/service/block.php';
+
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $blockId = $_GET['id'];
     $blocks = unserialize($_COOKIE["block-cookie"]);
@@ -13,6 +15,8 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $blocks = unserialize($_COOKIE["block-cookie"]);
+    $blockId = $_POST["id"];
     $newName = $_POST["name"];
     $newCampusId = $_POST["campusId"];
     foreach ($blocks as &$block) {
@@ -25,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $serializedBlocks = serialize($blocks);
     setcookie("block-cookie", $serializedBlocks, time() + 360000000, '/');
-    header("Location: block-details.php?id=$blockId");
+    header("Location: ../static/info-campus.php?id=$blockId");
     die();
 }
 ?>

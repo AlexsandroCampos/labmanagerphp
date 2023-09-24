@@ -32,13 +32,14 @@
             }
         }
 
+        $labId = $labData->getId();
         $name = $labData->getName();
         $number = $labData->getNumber();
         $block = $labData->getBlockId();
     ?>
     <div class="container d-flex justify-content-center align-items-center">
         <main role="main" class="pb-3">
-            <form class="d-flex flex-column" action="/service/lab.php" method="post">
+            <form class="d-flex flex-column" action="/service/edit-lab.php" method="post">
                 <label class="text-center my-2" for="name">
                   Nome do Laboratório
                   <input class="form-control" type="text" name="name" value="<?php echo isset($name) ? $name : ''; ?>">
@@ -52,6 +53,7 @@
                   <input class="form-control" type="text" name="block_id" value="<?php echo isset($block) ? $block : ''; ?>">
                 </label>
                 <input type="hidden" name="entity" value="lab">
+                <input type="hidden" name="id" value="<?php echo isset($labId) ? $labId : ''; ?>">
             
                 <button type="submit" class="btn btn__submit lvl1__bg">Salvar</button>
             </form>

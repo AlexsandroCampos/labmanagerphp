@@ -32,12 +32,13 @@
             }
         }
 
+        $blockId = $blockData->getId();
         $name = $blockData->getName();
         $campusId = $blockData->getCampusId();
     ?>
     <div class="container d-flex justify-content-center align-items-center">
         <main role="main" class="pb-3">
-            <form class="d-flex flex-column" action="/service/block.php" method="post">
+            <form class="d-flex flex-column" action="/service/edit-block.php" method="post">
                 <label class="text-center my-2" for="name">
                   Nome do Bloco
                   <input class="form-control" type="text" name="name" value="<?php echo isset($name) ? $name : ''; ?>">
@@ -47,6 +48,7 @@
                   <input class="form-control" type="number" name="campusId" value="<?php echo isset($campusId) ? $campusId : ''; ?>">
                 </label>
                 <input type="hidden" name="entity" value="block">
+                <input type="hidden" name="id" value="<?php echo isset($blockId) ? $blockId : ''; ?>">
             
                 <button type="submit" class="btn btn__submit lvl1__bg">Salvar</button>
             </form>
