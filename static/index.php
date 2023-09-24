@@ -52,7 +52,7 @@
                 
                 <!-- Listagem (Campus) -->
                 <div class="col-md-7">
-                    <div class="text-center"><small>Listagem dos Campus</small></div>
+                    <div class="text-center fw-bold mb-3"><small class="rounded-4 p-2 px-3 lvl0__bg">Listagem dos Campus</small></div>
                     <div class="lvl0__bg p-3 rounded-4">
                         <?php
                             require_once $_SERVER['DOCUMENT_ROOT'].'/service/campus.php';

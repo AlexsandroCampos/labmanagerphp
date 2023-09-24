@@ -41,6 +41,7 @@
                                 }
                             }
 
+                            $blockId = $blockData->getId();
                             $blockName = $blockData->getName();
                             $blockCampusId = $blockData->getCampusId();
                             $blockCampusSigla = "";
@@ -61,8 +62,14 @@
                             }
                         }
 
-                        echo '<h3 class="text-center">' . $blockName . '</h3>';
-                        echo '<h5 class="text-center text-muted">Câmpus: ' . $blockCampusSigla . '</h5>';
+                        echo '
+                            <p class="text-center fw-bold rounded-4 p-2 px-3 lvl0__bg">ID: ' . $blockId . '</p>
+                            <div class="lvl0__bg rounded-4 p-2 mb-2 px-3">
+                                <h3 class="text-center fw-semibold m-0">' . $blockName . '</h3>
+                                <h6 class="text-center text-muted m-0">Câmpus: ' . $blockCampusSigla . '</h6>
+                            </div>
+                        ';
+
                         echo '<div class="text-center"><a href="edit-blocks.php?id=' . $blockData->getId() . '" class="btn btn__submit lvl1__bg">Editar</a></div>'
 
                     ?>
@@ -73,7 +80,7 @@
                 
                 <!-- Listagem (labs) -->
                 <div class="col-md-7">
-                    <div class="text-center"><small>Listagem dos Laboratórios</small></div>
+                    <div class="text-center fw-bold mb-3"><small class="rounded-4 p-2 px-3 lvl0__bg">Listagem dos Laboratórios</small></div>
                     <div class="lvl0__bg p-3 rounded-4">
                         <?php
                             require_once $_SERVER['DOCUMENT_ROOT'].'/service/lab.php';
@@ -96,7 +103,7 @@
                                 echo '
                                     <div class="lvl1__bg p-3 rounded-4 mb-3">
                                         <h5 class="text-center">Nenhum laboratório cadastrado</h5>
-                                        <div class="text-center"><a href="labs.php" class="btn btn__submit lvl2__bg">Criar um</a></div>
+                                        <div class="text-center"><a href="labs.php?id=' . $blockId . '" class="btn btn__submit lvl2__bg">Criar um</a></div>
                                     </div> 
                                 ';
                             } else {

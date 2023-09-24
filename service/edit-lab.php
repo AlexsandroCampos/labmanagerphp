@@ -19,13 +19,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $labId = $_POST["id"];
     $newName = $_POST["name"];
     $newNumber = $_POST["number"];
-    $newBlock = $_POST["block"];
+    $newBlock = $_POST["block_id"];
 
     foreach ($labs as &$lab) {
         if ($lab->getId() == $labId) {
             $lab->setName($newName);
             $lab->setNumber($newNumber);
-            $lab->setBlock($newBlock);
+            $lab->setBlockId($newBlock);
             break;
         }
     }

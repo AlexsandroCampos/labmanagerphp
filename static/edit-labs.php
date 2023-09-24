@@ -52,7 +52,7 @@
                     ID do Bloco do laboratório
                   <input class="form-control" type="text" name="block_id" value="<?php echo isset($block) ? $block : ''; ?>">
                 </label>
-                <input type="hidden" name="entity" value="lab">
+                <input type="hidden" name="entity" value="lab-edit">
                 <input type="hidden" name="id" value="<?php echo isset($labId) ? $labId : ''; ?>">
             
                 <button type="submit" class="btn btn__submit lvl1__bg">Salvar</button>

@@ -19,12 +19,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $computerId = $_POST["id"];
     $newCpu = $_POST["cpu"];
     $newRam = $_POST["ram"];
-    $newLabId = $_POST["lab"];
+    $newLabId = $_POST["lab_id"];
     foreach ($computers as &$computer) {
         if ($computer->getId() == $computerId) {
             $computer->setCpu($newCpu);
             $computer->setRam($newRam);
-            $computer->setLab($newLabId);
+            $computer->setLabId($newLabId);
             break;
         }
     }

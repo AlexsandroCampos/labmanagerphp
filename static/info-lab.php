@@ -41,6 +41,7 @@
                                 }
                             }
 
+                            $labId = $labData->getId();
                             $labName = $labData->getName();
                             $labBlockId = $labData->getBlockId();
                             $labNumber = $labData->getNumber();
@@ -62,9 +63,15 @@
                             }
                         }
 
-                        echo '<h3 class="text-center">' . $labName . '</h3>';
-                        echo '<h5 class="text-center text-muted">' . $labNumber . '</h5>';
-                        echo '<p class="text-center text-muted">Bloco: ' . $labBlockName . '</p>';
+                        echo '
+                            <p class="text-center fw-bold rounded-4 p-2 px-3 lvl0__bg">ID: ' . $labId . '</p>
+                            <div class="lvl0__bg rounded-4 p-2 mb-2 px-3">
+                                <h3 class="text-center fw-semibold m-0">' . $labName . '</h3>
+                                <h6 class="text-center text-muted m-0">Número: ' . $labNumber . '</h6>
+                            </div>
+                            <p class="text-center rounded-4 p-2 px-3 lvl0__bg">Bloco: ' . $labBlockName . '</p>
+                        ';
+
                         echo '<div class="text-center"><a href="edit-labs.php?id=' . $labData->getId() . '" class="btn btn__submit lvl1__bg">Editar</a></div>'
 
                     ?>
@@ -75,7 +82,7 @@
                 
                 <!-- Listagem -->
                 <div class="col-md-7">
-                    <div class="text-center"><small>Listagem dos Computadores</small></div>
+                    <div class="text-center fw-bold mb-3"><small class="rounded-4 p-2 px-3 lvl0__bg">Listagem dos Computadores</small></div>
                     <div class="lvl0__bg p-3 rounded-4">
                         <?php
                             require_once $_SERVER['DOCUMENT_ROOT'].'/service/computer.php';
@@ -98,7 +105,7 @@
                                 echo '
                                     <div class="lvl1__bg p-3 rounded-4 mb-3">
                                         <h5 class="text-center">Nenhum computador cadastrado</h5>
-                                        <div class="text-center"><a href="computers.php" class="btn btn__submit lvl2__bg">Criar um</a></div>
+                                        <div class="text-center"><a href="computers.php?id=' . $labId . '" class="btn btn__submit lvl2__bg">Criar um</a></div>
                                     </div> 
                                 ';
                             } else {
