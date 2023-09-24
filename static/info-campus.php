@@ -42,15 +42,21 @@
                                 }
                             }
 
+                            $campusId = $campusData->getId();
                             $campusName = $campusData->getName();
                             $campusAddress = $campusData->getAddress();
                             $campusAcronym = $campusData->getAcronym();
                         }
 
+                        echo '
+                            <p class="text-center fw-bold rounded-4 p-2 px-3 lvl0__bg">ID: ' . $campusId . '</p>
+                            <div class="lvl0__bg rounded-4 p-2 mb-2 px-3">
+                                <h3 class="text-center fw-semibold m-0">' . $campusAcronym . '</h3>
+                                <h6 class="text-center text-muted m-0">' . $campusName . '</h6>
+                            </div>
+                            <p class="text-center rounded-4 p-2 px-3 lvl0__bg">' . $campusAddress . '</p>
+                        ';
 
-                        echo '<h3 class="text-center">' . $campusAcronym . '</h3>';
-                        echo '<h5 class="text-center text-muted">' . $campusName . '</h5>';
-                        echo '<p class="text-center text-muted">' . $campusAddress . '</p>';
                         echo '<div class="text-center"><a href="edit-campuses.php?id=' . $campusData->getId() . '" class="btn btn__submit lvl1__bg">Editar</a></div>'
                     ?>
                 </div>
@@ -60,7 +66,7 @@
                 
                 <!-- Listagem (Blocos) -->
                 <div class="col-md-7">
-                    <div class="text-center"><small>Listagem dos Blocos</small></div>
+                    <div class="text-center fw-bold mb-3"><small class="rounded-4 p-2 px-3 lvl0__bg">Listagem dos Blocos</small></div>
                     <div class="lvl0__bg p-3 rounded-4">
                         <?php
                             require_once $_SERVER['DOCUMENT_ROOT'].'/service/block.php';
@@ -83,7 +89,7 @@
                                 echo '
                                     <div class="lvl1__bg p-3 rounded-4 mb-3">
                                         <h5 class="text-center">Nenhum bloco cadastrado</h5>
-                                        <div class="text-center"><a href="block.php" class="btn btn__submit lvl2__bg">Criar um</a></div>
+                                        <div class="text-center"><a href="block.php?id=' . $campusId . '" class="btn btn__submit lvl2__bg">Criar um</a></div>
                                     </div> 
                                 ';
                             } else {

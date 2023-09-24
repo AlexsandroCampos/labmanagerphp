@@ -47,7 +47,7 @@
                   ID do Campus
                   <input class="form-control" type="number" name="campusId" value="<?php echo isset($campusId) ? $campusId : ''; ?>">
                 </label>
-                <input type="hidden" name="entity" value="block">
+                <input type="hidden" name="entity" value="block-edit">
                 <input type="hidden" name="id" value="<?php echo isset($blockId) ? $blockId : ''; ?>">
             
                 <button type="submit" class="btn btn__submit lvl1__bg">Salvar</button>

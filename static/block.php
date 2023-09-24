@@ -30,7 +30,7 @@
                 </label>
                 <label class="text-center my-2" for="acronym">
                     ID do campus
-                    <input class="form-control" type="number" name="campusId">
+                    <input class="form-control" type="number" name="campusId" value="<?php echo isset($_GET["id"]) ? $_GET["id"] : ''; ?>">
                 </label>
                 <input type="hidden" name="entity" value="block">
                 <button type="submit" class="btn btn__submit lvl1__bg">Enviar</button>

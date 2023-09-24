@@ -25,15 +25,15 @@
         <main role="main" class="pb-3">
             <form class="d-flex flex-column" action="/service/campus.php" method="post">
                 <label class="text-center my-2" for="name">
-                  Nome do campus
+                  Nome do Câmpus
                   <input class="form-control" type="text" name="name">
                 </label>
                 <label class="text-center my-2" for="address">
-                  Endereço do campus
+                  Endereço do Câmpus
                   <input class="form-control" type="text" name="address">
                 </label>
                 <label class="text-center my-2" for="acronym">
-                  Sigla do campus
+                  Sigla do Câmpus
                   <input class="form-control" type="text" name="acronym">
                 </label>
                 <input type="hidden" name="entity" value="campus">

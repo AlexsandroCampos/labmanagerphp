@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $serializedBlocks = serialize($blocks);
     setcookie("block-cookie", $serializedBlocks, time() + 360000000, '/');
-    header("Location: ../static/info-campus.php?id=$blockId");
+    header("Location: ../static/info-block.php?id=$blockId");
     die();
 }
 ?>

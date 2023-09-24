@@ -41,6 +41,7 @@
                                 }
                             }
 
+                            $computerId = $computerData->getId();
                             $computerLabId = $computerData->getLabId();
                             $computerCPU = $computerData->getCpu();
                             $computerRAM = $computerData->getRam();
@@ -63,9 +64,15 @@
                         }
                         echo '<h3 class="text-center mb-3">Detalhes do Computador</h3>';
 
-                        echo '<h5 class="text-center text-muted">Lab: ' . $computerLabName . '</h5>';
-                        echo '<p class="text-center m-0 text-muted">CPU: ' . $computerCPU . '</p>';
-                        echo '<p class="text-center text-muted">RAM: ' . $computerRAM . '</p>';
+                        echo '
+                            <p class="text-center fw-bold rounded-4 p-2 px-3 lvl0__bg">ID: ' . $computerId . '</p>
+                            <div class="lvl0__bg rounded-4 p-2 mb-2 px-3">
+                                <h3 class="text-center fw-semibold m-0">CPU: ' . $computerCPU . '</h3>
+                                <h6 class="text-center text-muted m-0">RAM: ' . $computerRAM . '</h6>
+                            </div>
+                            <p class="text-center rounded-4 p-2 px-3 lvl0__bg">Lab: ' . $computerLabName . '</p>
+                        ';
+                        
                         echo '<div class="text-center"><a href="edit-computers.php?id=' . $computerData->getId() . '" class="btn btn__submit lvl1__bg">Editar</a></div>'
 
                     ?>

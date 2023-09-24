@@ -41,18 +41,18 @@
         <main role="main" class="pb-3">
             <form class="d-flex flex-column" action="/service/edit-computer.php" method="post">
                 <label class="text-center my-2" for="cpu">
-                  CPU do computador<br>
-                  <input type="text" name="cpu" value="<?php echo isset($cpu) ? $cpu : ''; ?>"><br>
+                  CPU do computador
+                  <input class="form-control" type="text" name="cpu" value="<?php echo isset($cpu) ? $cpu : ''; ?>">
                 </label>
                 <label class="text-center my-2" for="ram">
-                  RAM do computador<br>
-                  <input type="text" name="ram" value="<?php echo isset($ram) ? $ram : ''; ?>"><br>
+                  RAM do computador
+                  <input class="form-control" type="text" name="ram" value="<?php echo isset($ram) ? $ram : ''; ?>">
                 </label>
                 <label class="text-center my-2" for="lab_id">
-                  ID do Laboratório<br>
-                  <input type="number" name="lab_id" value="<?php echo isset($labId) ? $labId : ''; ?>"><br>
+                  ID do Laboratório
+                  <input class="form-control" type="number" name="lab_id" value="<?php echo isset($labId) ? $labId : ''; ?>">
                 </label>
-                <input type="hidden" name="entity" value="computer">
+                <input type="hidden" name="entity" value="computer-edit">
                 <input type="hidden" name="id" value="<?php echo isset($computerId) ? $computerId : ''; ?>">
             
                 <button type="submit" class="btn btn__submit lvl1__bg">Salvar</button>
