@@ -30,7 +30,7 @@
                 </label>
                 <label class="text-center my-2" for="number">
                   Número do laboratório
-                  <input class="form-control" type="text" name="number">
+                  <input class="form-control" type="number" name="number">
                 </label>
                 <label class="text-center my-2" for="block_id">
                   ID do Bloco do laboratório

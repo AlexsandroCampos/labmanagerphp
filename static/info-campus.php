@@ -24,7 +24,7 @@
     <div class="container">
         <main role="main" class="pb-3">
             <section class="row m-auto justify-content-center">
-                <div class="col-md-4">
+                <div class="col-md-4 d-flex align-items-center justify-content-center flex-column">
                     <?php
                         require_once $_SERVER['DOCUMENT_ROOT'].'/service/campus.php';
 
@@ -51,6 +51,7 @@
                         echo '<h3 class="text-center">' . $campusAcronym . '</h3>';
                         echo '<h5 class="text-center text-muted">' . $campusName . '</h5>';
                         echo '<p class="text-center text-muted">' . $campusAddress . '</p>';
+                        echo '<div class="text-center"><a href="edit-campuses.php?id=' . $campusData->getId() . '" class="btn btn__submit lvl1__bg">Editar</a></div>'
                     ?>
                 </div>
                 <div class="col-auto">

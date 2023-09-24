@@ -21,20 +21,35 @@
             </div>
         </nav>
     </header>
+    <?php
+        require_once $_SERVER['DOCUMENT_ROOT'].'/service/campus.php';
+        $campusCookie = unserialize($_COOKIE['campus-cookie']);
+
+        foreach ($campusCookie as $campus) {
+            if ($campus->getId() == $_GET['id']) {
+                $campusData = $campus;
+                break;
+            }
+        }
+
+        $name = $campusData->getName();
+        $address = $campusData->getAddress();
+        $acronym = $campusData->getAcronym();
+    ?>
     <div class="container d-flex justify-content-center align-items-center">
         <main role="main" class="pb-3">
             <form class="d-flex flex-column" action="/service/campus.php" method="post">
                 <label class="text-center my-2" for="name">
-                  Nome do Campus<br>
-                  <input type="text" name="name" value="<?php echo isset($name) ? $name : ''; ?>"><br>
+                  Nome do Campus
+                  <input class="form-control" type="text" name="name" value="<?php echo isset($name) ? $name : ''; ?>">
                 </label>
                 <label class="text-center my-2" for="address">
-                  Endereço do Campus<br>
-                  <input type="text" name="address" value="<?php echo isset($address) ? $address : ''; ?>"><br>
+                  Endereço do Campus
+                  <input class="form-control" type="text" name="address" value="<?php echo isset($address) ? $address : ''; ?>">
                 </label>
                 <label class="text-center my-2" for="acronym">
-                    Sigla do campus<br>
-                  <input type="text" name="acronym" value="<?php echo isset($acronym) ? $acronym : ''; ?>"><br>
+                    Sigla do campus
+                  <input class="form-control" type="text" name="acronym" value="<?php echo isset($acronym) ? $acronym : ''; ?>">
                 </label>
                 <input type="hidden" name="entity" value="campus">
             

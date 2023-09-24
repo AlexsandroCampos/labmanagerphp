@@ -65,7 +65,7 @@ function validateLab() {
         $error = true;
     }
 
-    if($number > 0) {
+    if($number <= 0) {
         echo "Número do laboratório deve ser positivo <br>";
         $error = true;
     }
