@@ -1,6 +1,6 @@
 # LabManagerPHP
 
-O LabManagerPHP é um sistema desenvolvido para catalogar, organizar e administrar laboratórios de informática localizados nos câmpus do Instituto Federal de Educação, Ciência e Tecnologia. Com ele, é possível obter informações detalhadas sobre os laboratórios, incluindo as máquinas presentes, os blocos e os câmpus onde estão localizados.
+O LabManagerPHP é um sistema desenvolvido para catalogar, organizar e administrar laboratórios de informática localizados nos câmpus do Instituto Federal de Educação, Ciência e Tecnologia. Com ele, é possível obter informações detalhadas sobre os laboratórios, incluindo as máquinas presentes, os blocos e os campi onde estão localizados.
 
 ## Recursos Principais
 
