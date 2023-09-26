@@ -74,8 +74,8 @@ function validateComputer() {
         $error = true;
     }
 
-    if(strlen($ram) > 50 || strlen($ram) < 4) {
-        echo "RAM deve ter entre 4 e 50 caracteres <br>";
+    if(strlen($ram) > 50 || strlen($ram) < 3) {
+        echo "RAM deve ter entre 3 e 50 caracteres <br>";
         $error = true;
     }
 
