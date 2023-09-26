@@ -75,6 +75,34 @@ function validateLab() {
         $error = true;
     }
 
+    if (!isset($_COOKIE["block-cookie"])) {
+        echo "É necessário atribuir um bloco para esse laboratório, crie um bloco antes de criar um laboratório <br>";
+        $error = true;
+      } else {
+        require_once 'block.php';
+        $value = unserialize($_COOKIE["block-cookie"]);
+        if (!$value) {
+            $value = array();
+        }
+      
+        $found = false;
+        foreach ($value as $obj) {
+            if(isset($obj))
+            {
+                if ($obj->getId() == $blockId) 
+                {
+                    $found = true;
+                    break;
+                }
+            }
+        }
+      
+        if (!$found) {
+            echo "Bloco inválido ou inexistente. <br>";
+            $error = true;
+        }
+    }
+
     if($error)
     {
         echo '<a href="../static/labs.php">Voltar</a><br> ';
